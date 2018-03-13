@@ -1,1 +1,1 @@
-# cpp-2semester
+# cpp-2semester Chepushtanov Andrei
