@@ -20,7 +20,7 @@ class CMatrix
 				data[i] = new double [column_count];
 			}
 
-			for (int i = 0; i < rows_count; ++i)		//Нулевая матрица по умолчанию
+			for (int i = 0; i < rows_count; ++i)		//default null matrix
 				for (int j = 0; j < column_count; ++j)
 				{
 					data[i][j] = 0;
@@ -32,7 +32,7 @@ class CMatrix
 				delete[] data[i];
 			delete[] data;
 		}
-//Конструктор копирования
+//Сopy constructor
 		CMatrix(CMatrix const &otherMatrix)
 		: rows_count(otherMatrix.rows_count),
 		column_count(otherMatrix.column_count)
@@ -49,7 +49,7 @@ class CMatrix
 					data[i][j] = otherMatrix.data[i][j];
 				}
 		}
-//Перерузка =		
+//Overloanding operator=
 		CMatrix operator= (CMatrix const &otherMatrix)
 		{
 			if (&otherMatrix != this)
@@ -78,7 +78,7 @@ class CMatrix
 			}
 			return *this;
 		}
-//Чтение из файла
+//File input
 		friend
 		inline ifstream & operator>> (ifstream & fin, CMatrix &thisMatrix)
 		{
@@ -109,7 +109,7 @@ class CMatrix
 				}
 			return fin;
 		}
-//Запись в файл
+//File output
 		friend
 		inline ofstream & operator<< (ofstream & fout, CMatrix const &thisMatrix)
 		{
@@ -124,7 +124,7 @@ class CMatrix
 			}
 			return fout;
 		}
-//Перегрузка () для индексации		
+	
 		double operator() (const int i, const int j)
 		{
 			try
@@ -140,7 +140,7 @@ class CMatrix
 				return 0;
 			}
 		}
-//Транспонирование CMatrix
+//Transpose
 		void tpos ()
 		{
 			if (rows_count == column_count)
@@ -184,7 +184,7 @@ class CMatrix
 			}
 			return;
 		}
-//Dot для произведения матриц
+//Dot
 		CMatrix dot (const CMatrix &otherMatrix)
 		{
 			try
@@ -207,7 +207,7 @@ class CMatrix
 				return *this;
 			}
 		}
-//Перегрузка +
+
 		CMatrix operator+ (const CMatrix &otherMatrix)
 		{
 			try
@@ -240,7 +240,7 @@ class CMatrix
 				}
 			return result;
 		}
-//Перегрузка -		
+	
 		CMatrix operator- (const CMatrix &otherMatrix)
 		{
 			try
@@ -273,7 +273,7 @@ class CMatrix
 				}
 			return result;
 		}
-//Перегрузка *
+
 		CMatrix operator* (const CMatrix &otherMatrix)
 		{
 			try
@@ -306,7 +306,7 @@ class CMatrix
 				}
 			return result;
 		}
-//Перегрузка +=
+
 		CMatrix operator+= (const CMatrix &otherMatrix)
 		{
 			try
@@ -336,7 +336,7 @@ class CMatrix
 				}
 			return *this;
 		}
-//Перегрузка -=	
+
 		CMatrix operator-= (const CMatrix &otherMatrix)
 		{
 			try
@@ -366,7 +366,7 @@ class CMatrix
 				}
 			return *this;
 		}
-//Перегрузка *=
+
 		CMatrix operator*= (const CMatrix &otherMatrix)
 		{
 			try
