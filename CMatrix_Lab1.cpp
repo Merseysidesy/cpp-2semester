@@ -203,7 +203,7 @@ class CMatrix
 			try
 			{
 				if (column_count != otherMatrix.rows_count)
-					throw "the number of columns (of first CMatrix) isn't equal to the number of rows (of second CMatrix)! Returned same CMatrix!";
+					throw "the number of columns (of first CMatrix) isn't equal to the number of rows (of second CMatrix)! Returned CMatrix without values!";
 				
 				CMatrix result(rows_count, otherMatrix.column_count);
 				for (int i = 0; i < result.rows_count; ++i)
@@ -217,7 +217,8 @@ class CMatrix
 			catch(const char* th)
 			{
 				cout << th << endl;
-				return *this;
+				CMatrix drop;
+				return drop;
 			}
 		}
 
@@ -414,10 +415,5 @@ class CMatrix
 
 int main()
 {
-	CMatrix i(-1,1);
-	i(0,0) = 11;
-	//i(1,1) = 2;
-	//double k = i(1,1);
-	//cout << i(1,3);
 	return 0;
 }
