@@ -14,17 +14,30 @@ class CMatrix
 		: rows_count(rows),
 		column_count(column)
 		{
-			data = new double* [rows_count];
-			for (int i = 0; i < rows_count; ++i)
+			try
 			{
-				data[i] = new double [column_count];
-			}
-
-			for (int i = 0; i < rows_count; ++i)		//default null matrix
-				for (int j = 0; j < column_count; ++j)
+				if (rows < 0 || column < 0)
 				{
-					data[i][j] = 0;
+					throw "negative number of rows or columns! Returned empty CMatrix!";
 				}
+				data = new double* [rows_count];
+				for (int i = 0; i < rows_count; ++i)
+				{
+					data[i] = new double [column_count];
+				}
+
+				for (int i = 0; i < rows_count; ++i)		//default null matrix
+					for (int j = 0; j < column_count; ++j)
+					{
+						data[i][j] = 0;
+					}
+			}
+			catch(const char* str)
+			{
+				cout << str << endl;
+				rows_count = 0;
+				column_count = 0;
+			}
 		}
 		~CMatrix()
 		{
@@ -125,19 +138,19 @@ class CMatrix
 			return fout;
 		}
 	
-		double operator() (const int i, const int j)
+		double & operator() (const int i, const int j)
 		{
 			try
 			{
 				if (rows_count - 1 < i || column_count - 1 < j)
-					throw "non-existent index of CMatrix! Returned nil value!";
+					throw "non-existent index of CMatrix!";
 			
 				return this->data[i][j];
 			}
 			catch(const char* str)
 			{
 				cout << str << endl;
-				return 0;
+				exit(1);
 			}
 		}
 //Transpose
@@ -401,5 +414,10 @@ class CMatrix
 
 int main()
 {
+	CMatrix i(-1,1);
+	i(0,0) = 11;
+	//i(1,1) = 2;
+	//double k = i(1,1);
+	//cout << i(1,3);
 	return 0;
 }
