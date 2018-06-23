@@ -45,7 +45,7 @@ class CMatrix
 				delete[] data[i];
 			delete[] data;
 		}
-//Ñopy constructor
+//Ã‘opy constructor
 		CMatrix(CMatrix const &otherMatrix)
 		: rows_count(otherMatrix.rows_count),
 		column_count(otherMatrix.column_count)
