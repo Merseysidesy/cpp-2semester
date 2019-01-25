@@ -1,1 +1,1 @@
-# cpp-2semester Chepushtanov Andrei M3110
+# cpp-2semester Chepushtanov Andrei group M3110
